@@ -1087,26 +1087,26 @@ pub async fn reload_request_size(db: &DB) {
 }
 
 pub async fn reload_license_key(db: &DB) -> anyhow::Result<()> {
-    let q = load_value_from_global_settings(db, LICENSE_KEY_SETTING)
-        .await
-        .map_err(|err| anyhow::anyhow!("Error reloading license key: {}", err.to_string()))?;
+    // let q = load_value_from_global_settings(db, LICENSE_KEY_SETTING)
+    //     .await
+    //     .map_err(|err| anyhow::anyhow!("Error reloading license key: {}", err.to_string()))?;
 
-    let mut value = std::env::var("LICENSE_KEY")
-        .ok()
-        .and_then(|x| x.parse::<String>().ok())
-        .unwrap_or(String::new());
+    // let mut value = std::env::var("LICENSE_KEY")
+    //     .ok()
+    //     .and_then(|x| x.parse::<String>().ok())
+    //     .unwrap_or(String::new());
 
-    if let Some(q) = q {
-        if let Ok(v) = serde_json::from_value::<String>(q.clone()) {
-            tracing::info!(
-                "Loaded setting LICENSE_KEY from db config: {}",
-                truncate_token(&v)
-            );
-            value = v;
-        } else {
-            tracing::error!("Could not parse LICENSE_KEY found: {:#?}", &q);
-        }
-    };
+    // if let Some(q) = q {
+    //     if let Ok(v) = serde_json::from_value::<String>(q.clone()) {
+    //         tracing::info!(
+    //             "Loaded setting LICENSE_KEY from db config: {}",
+    //             truncate_token(&v)
+    //         );
+    //         value = v;
+    //     } else {
+    //         tracing::error!("Could not parse LICENSE_KEY found: {:#?}", &q);
+    //     }
+    // };
     set_license_key(value).await;
     Ok(())
 }

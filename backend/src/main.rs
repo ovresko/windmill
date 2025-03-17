@@ -415,23 +415,23 @@ Windmill Community Edition {GIT_VERSION}
         if let Err(err) = reload_license_key(&db).await {
             tracing::error!("Failed to reload license key: {err:#}");
         }
-        let valid_key = *LICENSE_KEY_VALID.read().await;
-        if !valid_key && !server_mode {
-            tracing::error!("Invalid license key, workers require a valid license key");
-        }
+        // let valid_key = *LICENSE_KEY_VALID.read().await;
+        // if !valid_key && !server_mode {
+        //     tracing::error!("Invalid license key, workers require a valid license key");
+        // }
         if server_mode {
             // only force renewal if invalid but not empty (= expired)
-            let renewed_now = maybe_renew_license_key_on_start(
-                &HTTP_CLIENT,
-                &db,
-                !valid_key && !LICENSE_KEY_ID.read().await.is_empty(),
-            )
-            .await;
-            if renewed_now {
-                if let Err(err) = reload_license_key(&db).await {
-                    tracing::error!("Failed to reload license key: {err:#}");
-                }
-            }
+            // let renewed_now = maybe_renew_license_key_on_start(
+            //     &HTTP_CLIENT,
+            //     &db,
+            //     !valid_key && !LICENSE_KEY_ID.read().await.is_empty(),
+            // )
+            // .await;
+            // if renewed_now {
+            //     if let Err(err) = reload_license_key(&db).await {
+            //         tracing::error!("Failed to reload license key: {err:#}");
+            //     }
+            // }
         }
     }
 
