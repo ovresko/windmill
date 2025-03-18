@@ -1108,7 +1108,7 @@ pub async fn reload_license_key(db: &DB) -> anyhow::Result<()> {
     //         tracing::error!("Could not parse LICENSE_KEY found: {:#?}", &q);
     //     }
     // };
-    set_license_key(value).await;
+    set_license_key("value".to_string()).await;
     Ok(())
 }
 

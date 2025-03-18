@@ -455,8 +455,8 @@ pub async fn get_critical_alerts(
 }
 
 #[cfg(not(feature = "enterprise"))]
-pub async fn get_critical_alerts() -> error::Error {
-    error::Error::NotFound("Critical Alerts require EE".to_string())
+pub async fn get_critical_alerts()   {
+   // error::Error::NotFound("Critical Alerts require EE".to_string())
 }
 
 #[cfg(feature = "enterprise")]
@@ -470,8 +470,8 @@ pub async fn acknowledge_critical_alert(
 }
 
 #[cfg(not(feature = "enterprise"))]
-pub async fn acknowledge_critical_alert() -> error::Error {
-    error::Error::NotFound("Critical Alerts require EE".to_string())
+pub async fn acknowledge_critical_alert()  {
+   // error::Error::NotFound("Critical Alerts require EE".to_string())
 }
 
 #[cfg(feature = "enterprise")]
@@ -485,6 +485,6 @@ pub async fn acknowledge_all_critical_alerts(
 }
 
 #[cfg(not(feature = "enterprise"))]
-pub async fn acknowledge_all_critical_alerts() -> error::Error {
-    error::Error::NotFound("Critical Alerts require EE".to_string())
+pub async fn acknowledge_all_critical_alerts()  {
+    //error::Error::NotFound("Critical Alerts require EE".to_string())
 }

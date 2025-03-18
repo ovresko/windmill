@@ -120,10 +120,10 @@
 					...params,
 					workspace: $workspaceStore
 				})
-				unacknowledged = res.alerts ?? []
+				unacknowledged = res?.alerts ?? []
 			} else {
 				const res = await SettingService.getCriticalAlerts(params)
-				unacknowledged = res.alerts ?? []
+				unacknowledged = res?.alerts ?? []
 			}
 
 			if (

@@ -1,6 +1,6 @@
 #[cfg(feature = "enterprise")]
 use crate::db::DB;
-use crate::ee::LicensePlan::Community;
+use crate::ee::LicensePlan::{Community, Enterprise, Pro};
 #[cfg(feature = "enterprise")]
 use crate::error;
 use serde::Deserialize;

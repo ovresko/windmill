@@ -16,12 +16,12 @@ const config = {
 		port: 3000,
 		proxy: {
 			'^/api/.*': {
-				target: process.env.REMOTE ?? 'https://app.windmill.dev/',
+				target:   'http://localhost',
 				changeOrigin: true,
 				cookieDomainRewrite: 'localhost'
 			},
 			'^/ws/.*': {
-				target: process.env.REMOTE_LSP ?? 'https://app.windmill.dev',
+				target:   'http://localhost',
 				changeOrigin: true,
 				ws: true
 			},
