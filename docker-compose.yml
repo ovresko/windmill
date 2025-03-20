@@ -168,7 +168,7 @@ services:
     logging: *default-logging
 
   caddy:
-    image: ghcr.io/windmill-labs/caddy-l4:latest
+    image: ghcr.io/caddybuilds/caddy-cloudflare:latest
     restart: unless-stopped
     # Configure the mounted Caddyfile and the exposed ports or use another reverse proxy if needed
     volumes:
@@ -179,9 +179,9 @@ services:
       # To change the exposed port, simply change 80:80 to <desired_port>:80. No other changes needed
       - 80:80
       - 25:25
-      # - 443:443 # Uncomment to enable HTTPS handling by Caddy
+      - 443:443 # Uncomment to enable HTTPS handling by Caddy
     environment:
-      - BASE_URL=":80"
+      #- BASE_URL=":80"
       # - BASE_URL=":443" # uncomment and comment line above to enable HTTPS via custom certificate and key files
       # - BASE_URL=mydomain.com # Uncomment and comment line above to enable HTTPS handling by Caddy
     logging: *default-logging
