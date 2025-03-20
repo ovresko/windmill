@@ -2,6 +2,7 @@
 	acme_dns cloudflare ghvbFPFXmLKHarvlpcIcwVxLdEWBJrQFFYQz2Blu
 }
 
+:80,
 app.sabil.dz,
 app.sabil.space {
         #bind {$ADDRESS}
