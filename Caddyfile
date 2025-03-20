@@ -1,12 +1,5 @@
 {
 	acme_dns cloudflare ghvbFPFXmLKHarvlpcIcwVxLdEWBJrQFFYQz2Blu
-	layer4 {
-		:25 {
-			proxy {
-				to windmill_server:2525
-			}
-		}
-	}
 }
 
 app.sabil.dz,
