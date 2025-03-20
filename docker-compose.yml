@@ -45,6 +45,7 @@ services:
     environment:
       - DATABASE_URL=${DATABASE_URL}
       - MODE=server
+      - BASE_URL=app.sabil.dz
     depends_on:
       db:
         condition: service_healthy
