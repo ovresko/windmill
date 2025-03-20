@@ -2,7 +2,7 @@
 	acme_dns cloudflare ghvbFPFXmLKHarvlpcIcwVxLdEWBJrQFFYQz2Blu
 }
 
-:8080,
+*:8080,
 app.sabil.dz,
 app.sabil.space {
 		respond "test"
