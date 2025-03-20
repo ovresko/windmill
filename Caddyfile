@@ -1,7 +1,4 @@
-
-
 {
-	acme_dns cloudflare ghvbFPFXmLKHarvlpcIcwVxLdEWBJrQFFYQz2Blu
 	layer4 {
 		:25 {
 			proxy {
@@ -11,8 +8,7 @@
 	}
 }
 
-app.sabil.dz,
-app.sabil.space {
+{$BASE_URL} {
         bind {$ADDRESS}
         reverse_proxy /ws/* http://lsp:3001
         # reverse_proxy /ws_mp/* http://multiplayer:3002
