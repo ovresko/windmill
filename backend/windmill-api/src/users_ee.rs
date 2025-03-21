@@ -115,7 +115,7 @@ pub async fn set_password(
     // Hash with fixed salt
     let salt = SaltString::generate(&mut OsRng);
     let password_hash = _argon2
-        .hash_password(_nu.password.as_bytes(), &salt)
+        .hash_password(_ep.password.as_bytes(), &salt)
         .map_err(|e| Error::internal_err(e.to_string()))?
         .to_string();
 
