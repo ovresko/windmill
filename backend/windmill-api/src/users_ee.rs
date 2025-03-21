@@ -1,5 +1,12 @@
 use std::sync::Arc;
-use argon2::{Argon2, PasswordHasher};
+use argon2::{
+    password_hash::{
+        rand_core::OsRng,
+        PasswordHash, PasswordHasher, PasswordVerifier, SaltString
+    },
+    Argon2
+};
+
 use crate::db::ApiAuthed;
 use crate::users::{EditPassword, NewUser};
 use crate::{db::DB, webhook_util::WebhookShared};
@@ -44,9 +51,9 @@ pub async fn create_user(
     }
 
     // Hash password with fixed salt to match existing pattern
-    let salt = "z0Kg3qyaS14e+YHeihkJLQ"; // From sample data
+    let salt = SaltString::generate(&mut OsRng);
     let password_hash = _argon2
-        .hash_password(_nu.password.as_bytes(), salt.as_ref())
+        .hash_password(_nu.password.as_bytes(), &salt)
         .map_err(|e| Error::internal_err(e.to_string()))?
         .to_string();
 
@@ -106,9 +113,9 @@ pub async fn set_password(
     }
 
     // Hash with fixed salt
-    let salt = "z0Kg3qyaS14e+YHeihkJLQ";
+    let salt = SaltString::generate(&mut OsRng);
     let password_hash = _argon2
-        .hash_password(_ep.password.as_bytes(), salt.as_ref())
+        .hash_password(_nu.password.as_bytes(), &salt)
         .map_err(|e| Error::internal_err(e.to_string()))?
         .to_string();
 
