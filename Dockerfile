@@ -54,7 +54,7 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry \
     CARGO_NET_GIT_FETCH_WITH_CLI=true cargo chef prepare --recipe-path recipe.json
 
 FROM rust_base AS builder
-ARG features="benchmark,cloud,scoped_cache,ts-parser,tantivy,entreprise,embedding,parquet,openidconnect,jemalloc,deno_core,license,http_trigger,zip,oauth2,dind,php,mysql,mssql,bigquery,oracledb,postgres_trigger,websocket,python,smtp,csharp,static_frontend,rust"
+ARG features="benchmark,cloud,scoped_cache,tantivy,enterprise,embedding,parquet,openidconnect,jemalloc,deno_core,license,http_trigger,zip,oauth2,dind,php,mysql,mssql,bigquery,oracledb,postgres_trigger,websocket,python,smtp,csharp,static_frontend,rust"
 
 COPY --from=planner /windmill/recipe.json recipe.json
 
