@@ -45,7 +45,7 @@ services:
     environment:
       - DATABASE_URL=${DATABASE_URL}
       - MODE=server
-      - BASE_URL=app.sabil.dz
+      - BASE_URL=app.sabil.space
     depends_on:
       db:
         condition: service_healthy
@@ -188,7 +188,7 @@ services:
     environment:
       #- BASE_URL=":80"
       # - BASE_URL=":443" # uncomment and comment line above to enable HTTPS via custom certificate and key files
-      - BASE_URL=app.sabil.dz # Uncomment and comment line above to enable HTTPS handling by Caddy
+      - BASE_URL=app.sabil.space # Uncomment and comment line above to enable HTTPS handling by Caddy
     logging: *default-logging
 
 volumes:
